@@ -1,22 +1,22 @@
-<ins>**Model:**<ins> MSI a15 Thin ai b8vf
+Model : MSI A15 THIN AI B8VF
 
-**Microcode Patch Level: A705206**
+Microcode Patch Level : A705206
 
-**BIOS version:** E16RKAMS.30D
+BIOS version : E16RKAMS.30D
 
-BIOS date: 2025-06-27
+BIOS date : 2025-06-27
 
 BIOS Vendor : American Megatrends International, LLC.
 
-**EC Version** : 16RKIMS2.110
+EC Version : 16RKIMS2.110
 
-CPU:Ryzen 9 8945HS w/ Radeon 780M Graphics
+CPU: Ryzen 9 8945HS w/ Radeon 780M Graphics
 
 RAM: 64GB Corsair Vengeance RAM 5600Mhz
 
 GPU: RTX 4060
 
-**A15_Thin_AI_B8VF_Modded_Bios**
+
 
 This is the packed .30D Bios update file.
 
