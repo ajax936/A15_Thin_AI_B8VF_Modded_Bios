@@ -18,78 +18,117 @@
 
 ## 🛠️ What’s Modded
 
-This BIOS mod for the MSI Thin A15 AI B8VF includes extensive changes to unlock full system control and remove hardcoded restrictions:
+This BIOS mod includes extensive changes to unlock full control and remove critical firmware protections.
 
 ### ✅ Features Unlocked / Protections Removed
 
-- ✅ **All hidden menus and advanced BIOS settings unlocked**  
-- ✅ **NVRAM lock disabled**  
-- ✅ **fTPM / TPM state check bypassed**  
-- ✅ **BIOS update restrictions removed**  
-- ✅ **Rollback protection disabled**  
-- ✅ **SMM (System Management Mode) write lock logic removed**  
-- ✅ **Flash write protection bypassed**  
-- ✅ **Trap logic removed** — prevents system lockout after modifying flagged settings  
+- ✅ All hidden BIOS menus/options unlocked  
+- ✅ NVRAM lock disabled  
+- ✅ fTPM/TPM state check bypassed  
+- ✅ BIOS update/rollback restrictions removed  
+- ✅ Flash write protection bypassed  
+- ✅ SMM write lock logic removed  
+- ✅ Trap logic removed to prevent boot lockout from flagged settings  
 
 ---
 
 ## ⚠️ Known Issue
 
-> ❌ Currently **cannot be flashed via USB FAT32** method with `E16RKAMS.30D` as the filename — the modded file is rejected due to:
+> ❌ **USB Flash Method not working currently**  
+> Rejection due to:
 - File size mismatch (removed modules)
-- Possibly invalid or altered firmware header
+- Possibly invalid BIOS header
 
-🔧 **Plan:**  
-Working to resolve this so it can be flashed with standard UEFI tools. For now, flashing via hardware SPI programmer or AFUEFI may be required.
-
----
-
-## 📂 Files
-
-- `E16RKAMS_PATCHED.30D` – Modded BIOS file (use with caution)
-- `AfuEfix64.efi` – AMI Firmware Update UEFI tool (for advanced users)
+### 🔄 Goal:
+Restore USB flash support (`E16RKAMS.30D` via FAT32 USB) or use alternative flashing methods.
 
 ---
 
-## 🔓 BIOS Recovery Method (Tested Safe)
+## 💾 Flashing via AFUEFI (Step-by-Step)
 
-If your system doesn’t boot after a bad flash or invalid config:
+> This method uses AMI’s AFUEFI tool under UEFI Shell.  
+> Recommended for **advanced users**.
 
-1. **Unplug power adapter**
-2. Hold **CTRL + ESC**
-3. Plug power adapter in while holding keys
-4. System will enter BIOS recovery (if BIOS is structured correctly)
+### ✅ What You Need:
+- `AfuEfix64.efi` (included)
+- The modded BIOS file (e.g., `E16RKAMS_PATCHED.30D`)
+- A USB stick formatted to **FAT32**
+- Optional: `Shellx64.efi` if launching directly from boot
+
+### 🔧 Steps:
+
+1. Format a USB drive to **FAT32**
+2. Copy these files to the root of the USB:
+   - `AfuEfix64.efi`
+   - `E16RKAMS_PATCHED.30D`
+   - (Optional) `Shellx64.efi` if booting directly to shell
+3. Reboot your laptop
+4. Enter BIOS → Disable Secure Boot
+5. Set Boot Mode to **UEFI**
+6. Boot to UEFI Shell (via Boot Menu or `Shellx64.efi`)
+7. In UEFI Shell:
+   - Type `fs0:` (or `fs1:`, `fs2:` depending on USB)
+   - Then run:
+     ```bash
+     AfuEfix64.efi E16RKAMS_PATCHED.30D /P /B /N /X /K
+     ```
+8. Let the flashing process complete. It may auto-reboot.
+
+> 🧠 **Tip:** If the system bricks or doesn't boot, try BIOS recovery below.
 
 ---
 
-## 🧪 For Advanced Users
+## 🧯 BIOS Recovery Method (MSI Tested)
 
-Feel free to:
-- Disassemble and analyze the `.30D` file
-- Improve the header or module map to restore USB flashing support
-- Provide feedback or contribute fixes via pull requests
-
----
-
-## 💬 Disclaimer
-
-> This BIOS mod is provided as-is with **no warranty**. Flashing modified firmware can **brick your device**.  
-> You accept all risk when using this mod. Backup your original BIOS before flashing.
+1. Rename BIOS file to: `E16RKAMS.30D`  
+2. Place on FAT32 USB (root directory)  
+3. Unplug AC adapter  
+4. Hold **CTRL + ESC**  
+5. Plug in power while still holding keys  
+6. Release keys after ~10 sec → system should auto-recover BIOS
 
 ---
 
-## 🧠 Credits
+## 🧰 Tools for BIOS Modding & Flashing
 
-Modded and tested on:
-> **System UUID:** `6CC9AAD6-4F4A-4394-8804-A857AE567F96`  
-> **System Serial:** `K2408N0106176`  
-> **Motherboard Serial:** `BSS-0123456789`
+| Tool | Description | Download |
+|------|-------------|----------|
+| [AFUEFI](https://ami.com/en/download/) | AMI UEFI flash tool | _Included in repo_ |
+| [AMI MMTool](https://www.majorgeeks.com/files/details/mmtool.html) | Insert/replace UEFI modules | ✓ |
+| [UEFITool NE A59](https://github.com/LongSoft/UEFITool/releases) | Visual BIOS structure editor | ✓ |
+| [IFR Extractor](https://github.com/dellkaze/IFR-Extractor) | Extract BIOS Setup strings | ✓ |
+| [UEFIReplace](https://github.com/LongSoft/UEFIReplace) | Replace PE32/UEFI modules | ✓ |
+| [Universal IFR Extractor](https://github.com/LongSoft/Universal-IFR-Extractor) | Decode setup options | ✓ |
+| [AMI Change Logo Tool](https://www.majorgeeks.com/files/details/ami_change_logo_tool.html) | Modify boot logo | ✓ |
+
+---
+
+## ⚠️ Disclaimer
+
+> This modded BIOS is experimental and provided **as-is**.  
+> Flashing a modded BIOS carries the risk of **bricking your laptop**.  
+> Always back up your current BIOS and understand recovery procedures.
+
+---
+
+## 🧠 System IDs (for reference)
+
+- **System UUID:** `6CC9AAD6-4F4A-4394-8804-A857AE567F96`  
+- **System Serial Number:** `K2408N0106176`  
+- **Motherboard Serial:** `BSS-0123456789`  
+
+---
+
+## 🙌 Contributions Welcome
+
+Have a fix for the file header, USB flash compatibility, or just want to explore?  
+> 🛠️ **Fork the repo and submit a pull request!**
 
 ---
 
 ## ✍️ Author
 
 **Robert Mitchell**  
-BIOS modder, hardware tinkerer, and performance tweaker.  
-Reach out or contribute if you’ve got BIOS expertise to share.
+BIOS modder | Firmware tinker | Hardware optimizer  
+> Always pushing laptops beyond their limits.
 
