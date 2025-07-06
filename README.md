@@ -20,7 +20,8 @@ GPU: RTX 4060
 
 This is the packed .30D Bios update file.
 
-Modded packed bios file that Unlocks all hidden menus and options, removes all trap logic that will hard block you from starting your laptop if you modfiy certain settings that are flagged and you are forced to hard reset your bios  doing the recovery sequence keys and all. NVRAM lock disabled, fTPM/TPM state check bypassed, rollback trigger prevention, Flash write protection & BIOS update restrictions removed, SMM write lock logic removed. Flashed by using USB formatted to fat32 with the file on named 
-"E16RKAMS.30D"
+Modded packed bios file that Unlocks all hidden menus and options, removes all trap logic that will hard block you from starting your laptop if you modfiy certain settings that are flagged and you are forced to hard reset your bios  doing the recovery sequence keys and all. NVRAM lock disabled, fTPM/TPM state check bypassed, rollback trigger prevention, Flash write protection & BIOS update restrictions removed, SMM write lock logic removed. Only problem I have with it is it wont flash through usb method right now because I took a bunch of modules out the files size isnt the same and I dont tyhink my header is either so its rejecting it. Any one with knowledge that wants to take a pilpher arouind in it is free to.
+I want to get it where i can Flash it by using USB formatted to fat32 with the file on named 
+"E16RKAMS.30D" or by using a flashing tool if I must if all else fails.
 
 
