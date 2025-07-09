@@ -111,55 +111,40 @@ Recovery Steps:
 ### Recovery Flash Instructions:
 1. Write ISO to USB (use Rufus, FAT32, GPT, no UEFI validation)
 2. Insert USB into USB drive and restart
-3. Press DEL key whiel splash screen pops up to enter bios
-4. Once you enter the bios go to the "Advanced" menu and press "Co-Piolit+Fn+Right Shift+Left Alt+F2" to enable the hidden bios menu
-5. Enable Allow "Bios Downgrade" Option
-6. Then go down to "AMD fTPM configuration and Disable that
-7. Return to the "Advanced" menu and go down to "AMD CBS" from there go down to "NBIO common Options" go to PSPP Policy and Disable it
-8. Now go down to "FCH Common Options" from there go down to "SPI Configuration Options"  and disable both "HID and HID2"
-9. Return to "AMD CBS" menu and go down to "SOC Miscellaneous Control" now select "Customized" for "Microsoft Security Levels", select "disable" these following options "Secure-core Auto-enablement", "Trusted Platform Module", "Pluton Security Processor", "DRTM Support", "SMM Isolation Support".
-10. Now go down to "Pluton Options" and select "Disable" for both options in that menu
-11. Now go back one menu to "SOC Misc. Control" and go to "Firmware Anti-rollback (FAR) and select "Disable"
-12. Now go back to the "SOC Misc. Control" menu and go to "Intrusion Detection menu and set to "0"
-13. Go back one menu to "SOC Misc. Control" and go down to "ABL Console Out Control" and disable it
-14. Go down to "PSP RSPM Switch" and also disable that
-15. Now go to the right to the "Boot" menu and go to "Quiet boot" and disable it
-16. Also go down and disable "Fastboot" 
-17. Make sure "Boot mode select" is set to UEFI
-18. Now go down to "Boot options" and select your USB Drive you flashed and select it from the menu
-19. Now go to the right menu to "Security" go down to "Trusted computing" and disable it both times it appears on there
-20. Now go down to "Secure boot" and disable it and set "Secure boot mode" to "Custom"
-21. Now go to the "Save and exit" menu and select "Save changes and exit"
-22. Now you should potentionally boot into the UEFI Shell
+3.  Press `DEL` key while splash screen pops up to enter bios
+4. Once you enter the bios go to the `Advanced` menu and press `Co-Piolit+Fn+Right Shift+Left Alt+F2` to enable the hidden bios menu
+5. Enable Allow `Bios Downgrade` Option
+6. Then go down to `AMD fTPM configuration` and Disable that
+7. Return to the `Advanced` menu and go down to `AMD CBS` from there go down to `NBIO common Options` go to `PSPP Policy` and Disable it
+8. Now go down to `FCH Common Options` from there go down to `SPI Configuration Options`  and disable both `HID and HID2`
+9. Return to `AMD CBS` menu and go down to `SOC Miscellaneous Control` now select `Customized` for `Microsoft Security Levels`, select `disable` these following options `Secure-core Auto-enablement`, `Trusted Platform Module`, `Pluton Security Processor`, `DRTM Support`, `SMM Isolation Support`.
+10. Now go down to `Pluton Options` and select `Disable` for both options in that menu
+11. Now go back one menu to `SOC Misc. Control` and go to `Firmware Anti-rollback (FAR)` and select `Disable`
+12. Now go back to the `SOC Misc. Control` menu and go to `Intrusion Detection` menu and set to `0`
+13. Go back one menu to `SOC Misc. Control` and go down to `ABL Console Out Control` and disable it
+14. Go down to `PSP RSPM Switch` and also disable that
+15. Now go to the right to the `Boot` menu and go to `Quiet boot` and disable it
+16. Also go down and disable `Fastboot` 
+17. Make sure `Boot mode select` is set to `UEFI`
+18. Now go down to `Boot options` and select your USB Drive`you flashed and select it from the menu
+19. Now go to the right menu to `Security` go down to `Trusted computing` and disable it both times it appears on there
+20. Now go down to `Secure boot` and disable it and set `Secure boot mode` to `Custom`
+21. Now go to the `Save and exit` menu and select `Save changes and exit`
+22.Now you should potentially boot into the `UEFI Shell`
 23. Flash should auto-initiate via `startup.nsh`
-24. When you enter the UEFI Shell type the command "map -r" then locate which device ID is your USB. 
-25. Type the device ID eX. "fs0:" this will select that drive
-26. Now type the command "AFUEFIx64.efi E16RKAMS.30D /p /b /n /x /RECOVERY"
-25. Now it will go through the native flashing method via Recovery and reboot. Now remove the IUSB and boot into windows
-
-
-
-Use at your own risk — backup original and ensure recovery access.
-UEFI Shell should launch and startup.nsh runs automatically
-
-If auto-run fails, manually enter:
-
-Try fs1: or fs2: if fs0: is not found.
+24. When you enter the UEFI Shell type the command `map -r` locate the device ID for your USB
+25. Once you identified your USB drive type `fsX:` (Where X=what ever number your USB drive is
+26. Now your USB drives file system will be the selected one thats active, so type `AFUEFIx64.efi E16RKAMS.30D /p /b /n /x /RECOVERY`
+27. Now it will go through the native flashing method via Recovery and reboot. Now remove the USB and boot into windows
 
 💡 Tip: Use `map -r` in shell if paths don't map to `fs0:`
 
 ✅ Flash successful? You now have an unlocked BIOS!
 
-1. Type map -r to locate your USB Flash Drive
-2. Type fsX: (X=Your USB Flash Drive number)
-3. Type AFUEFIx64.efi E16RKAMS.30D /p /b /n /x /RECOVERY
-4. Wait for the bios to update, system will ask to confirm reboot and click "Y" and quickly remove the USB Flash drive
-
-✅ Once done, enjoy your unlocked BIOS! Use responsibly. Backup everything first.
-
+**Use at your own risk — backup original and ensure recovery access.**
 > 🧠 **Tip:** If the system bricks or doesn't boot, try BIOS recovery below.
 
-💡 Manual fallback:
+**💡 Manual fallback:**
 1. Power off laptop
 2. Disconnect battery and charger
 3. Hold the power button for 30 seconds
@@ -173,7 +158,7 @@ Try fs1: or fs2: if fs0: is not found.
 | Tool | Description | Download |
 |------|-------------|----------|
 [MSI ISO CREATOR](https://drive.google.com/file/d/1eIipSw4_YGn1haPM1PDGcZhvCDCkSsms/view?usp=drive_link) | ISO Creation Tool | ✓ |
-| [AFUEFI](https://ami.com/en/download/) | AMI UEFI flash tool | _Included in repo_ |
+| [AFUEFI](https://ami.com/en/download/) | AMI UEFI flash tool | ✓ |
 | [AMI MMTool](https://www.majorgeeks.com/files/details/mmtool.html) | Insert/replace UEFI modules | ✓ |
 | [UEFITool NE A59](https://github.com/LongSoft/UEFITool/releases) | Visual BIOS structure editor | ✓ |
 | [IFR Extractor](https://github.com/dellkaze/IFR-Extractor) | Extract BIOS Setup strings | ✓ |
