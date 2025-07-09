@@ -72,12 +72,12 @@ Restore USB flash support (`E16RKAMS.30D` via FAT32 USB) or use alternative flas
 - ✅ Trap logic removed to prevent boot lockout from flagged settings
 
 📦 PACKAGE INCLUDES:
-- Patched BIOS (E16RKAMS.30D)
+- `Patched BIOS (E16RKAMS.30D)`
 - `AFUEFIx64.efi`
 - `Shellx64.efi`
 - `startup.nsh`
-- Flashable ISO
-- Python automation tools to recompile with your own mods
+- `Flashable ISO`
+- `Python automation tools to recompile with your own mods`
 
 ⚠️ **FLASHING INSTRUCTIONS:**
 Due to flash protection, you must flash from BIOS built in recovery mode:
@@ -169,9 +169,10 @@ Try fs1: or fs2: if fs0: is not found.
 ---
 
 ## 🧰 Tools for BIOS Modding & Flashing
-| [MSI ISO CREATOR](https://drive.google.com/file/d/1eIipSw4_YGn1haPM1PDGcZhvCDCkSsms/view?usp=drive_link)
+| 
 | Tool | Description | Download |
 |------|-------------|----------|
+[MSI ISO CREATOR](https://drive.google.com/file/d/1eIipSw4_YGn1haPM1PDGcZhvCDCkSsms/view?usp=drive_link) | ISO Creation Tool | ✓ |
 | [AFUEFI](https://ami.com/en/download/) | AMI UEFI flash tool | _Included in repo_ |
 | [AMI MMTool](https://www.majorgeeks.com/files/details/mmtool.html) | Insert/replace UEFI modules | ✓ |
 | [UEFITool NE A59](https://github.com/LongSoft/UEFITool/releases) | Visual BIOS structure editor | ✓ |
